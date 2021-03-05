@@ -7,7 +7,7 @@ import Step4Vote from '../Procedures/Step4Vote';
 
 function Stepper() {
   return (
-    <p>steppr</p>
+    <Step1Keyword/>
   );
 }
 
