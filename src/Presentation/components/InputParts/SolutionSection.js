@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Grid, Typography} from '@material-ui/core';
+import {Container, Grid} from '@material-ui/core';
 import DisplayKeyword from '../InputParts/DisplayKeyword';
 import AddSolution from '../InputParts/AddSolution';
 
