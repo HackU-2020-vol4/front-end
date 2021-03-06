@@ -5,7 +5,6 @@ import {
     Step,
     StepLabel,
     Box,
-    Grid,
     Button
 } from '@material-ui/core';
 import StepIcons from "./StepperIcons"
@@ -65,15 +64,6 @@ const Steppers = () => {
                 ))}
             </Stepper>
             <Box className={classes.mainBox}>
-               <Grid
-                container
-                spacing={3}
-                direction="column"
-                justify="space-around"
-                alignItems="center"
-                style={{ height: "400px" }}
-            >
-        </Grid>
 	<StepContent step={activeStep} />
 	<Button disabled={activeStep === 0} className={classes.button} onClick={handleBack}>
 	Back
