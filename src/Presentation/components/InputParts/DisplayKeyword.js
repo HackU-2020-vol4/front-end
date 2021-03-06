@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {Grid, IconButton, Typography} from '@material-ui/core';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import CreateIcon from '@material-ui/icons/Create';
 
 class DisplayKeyword extends Component {
 
@@ -13,14 +11,14 @@ class DisplayKeyword extends Component {
         } = this.props;
 
         return (
-        <Grid container spacing={1}>
-            <Grid item xs={10}>
-                <Typography variant="h5" gutterBottom>
-                    {this.props.element.content}
+        <Grid container style={{margin: "3vh auto"}}>
+            <Grid item xs={11}>
+                <Typography variant="h6" gutterBottom>
+                    ★ {this.props.element.content}
                 </Typography>
             </Grid>
-            <Grid item xs={2}>
-                <IconButton onClick={() => onDelete(id)}>
+            <Grid item xs={1}>
+                <IconButton onClick={() => onDelete(id)} style={{padding: "0"}}>
                 <HighlightOffIcon fontSize="large"/>
                 </IconButton>
             </Grid>

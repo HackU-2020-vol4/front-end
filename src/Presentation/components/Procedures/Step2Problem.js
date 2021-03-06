@@ -17,7 +17,7 @@ class Step2Problem extends Component {
       <ul>
       {keywordList.map(element => (
         <div>
-          <p>{element} : </p>
+          <Typography variant="h6">{element} : </Typography>
           <ProblemSection/>
         </div>
         ))}

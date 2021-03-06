@@ -3,6 +3,8 @@ import {Container, Grid, Typography} from '@material-ui/core';
 import DisplayKeyword from '../InputParts/DisplayKeyword';
 import AddProblem from '../InputParts/AddProblem';
 
+import '../../Styles/procedure.css';
+
 class PloblemSection extends Component {
 
    constructor() {
