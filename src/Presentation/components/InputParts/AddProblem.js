@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Container, Grid, Typography, Button, TextField} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
-class AddKeyword extends React.Component{
+class AddPloblem extends React.Component{
     onChange(e) {
         const { onChange } = this.props;
         onChange({
@@ -25,8 +25,9 @@ class AddKeyword extends React.Component{
         <Grid container alignItems="center" justify="center">
             <TextField 
             id="standard-basic"
-            label="キーワードを入力" 
+            label="課題を入力" 
             value={value}
+            style = {{width: 350}}
             onChange={e => this.onChange(e)} />
         <Button onClick={() => this.add()} variant="contained" startIcon={<AddIcon />}>
           Add
@@ -36,4 +37,4 @@ class AddKeyword extends React.Component{
   }
 }
 
-export default AddKeyword;
+export default AddPloblem;

@@ -14,7 +14,7 @@ class DisplayKeyword extends Component {
 
         return (
         <Grid container spacing={1}>
-            <Grid item xs={8}>
+            <Grid item xs={10}>
                 <Typography variant="h5" gutterBottom>
                     {this.props.element.content}
                 </Typography>
