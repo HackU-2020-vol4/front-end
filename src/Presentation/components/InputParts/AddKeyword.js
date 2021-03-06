@@ -28,7 +28,7 @@ class AddKeyword extends React.Component{
             label="キーワードを入力" 
             value={value}
             onChange={e => this.onChange(e)} />
-        <Button onClick={() => this.add()} variant="contained" startIcon={<AddIcon />}>
+        <Button onClick={() => this.add()} variant="contained" startIcon={<AddIcon />} style={{backgroundColor: "#C2DDE8"}}>
           Add
         </Button>
         </Grid>

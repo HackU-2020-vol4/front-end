@@ -29,7 +29,7 @@ class AddPloblem extends React.Component{
             value={value}
             style = {{width: 350}}
             onChange={e => this.onChange(e)} />
-        <Button onClick={() => this.add()} variant="contained" startIcon={<AddIcon />}>
+        <Button onClick={() => this.add()} variant="contained" startIcon={<AddIcon />} style={{backgroundColor: "#C2DDE8"}}>
           Add
         </Button>
         </Grid>

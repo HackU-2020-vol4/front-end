@@ -38,7 +38,7 @@ class Step1Keyword extends Component {
     return (
       <Container maxWidth="sm">
       <Grid container alignItems="center" justify="center">
-        <Typography variant="h4">Step1 キーワードを出していこう</Typography>
+        <Typography variant="h4" style={{margin: "3vh auto"}}>Step1 キーワードを出していこう</Typography>
         <Typography variant="body1" gutterBottom>
           テーマがあればテーマに関連したキーワードを，なければ思いつく限りのキーワードを書いていきましょう．
           何でもいいのでとりあえず思いつく限りの単語を書き出していくことが大切です．

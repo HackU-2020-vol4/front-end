@@ -9,7 +9,7 @@ class Step3Solution extends Component {
     return (
     <Container maxWidth="sm">
     <Grid container alignItems="center" justify="center">
-      <Typography variant="h4">Step3 解決策を考えてみよう</Typography>
+      <Typography variant="h4" style={{margin: "3vh auto"}}>Step3 解決策を考えてみよう</Typography>
       <Typography variant="body1" gutterBottom>
         先ほど出した課題に対して解決策を書き出していきましょう．
         ここが一番の頑張り時です．ユニークな解決策をどんどんひねり出していきましょう！
@@ -17,7 +17,7 @@ class Step3Solution extends Component {
       <ul>
       {keywordList.map(element => (
         <div>
-          <Typography variant="h6">{element} : </Typography>
+          <Typography variant="h6" style={{margin: "3vh auto"}}>{element} : </Typography>
           <SolutionSection/>
         </div>
         ))}
