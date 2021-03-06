@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
-import {Container, Grid, Typography, Button} from '@material-ui/core';
+import {Container, Grid, Typography, Button, TextField} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import InputKeyword from '../InputParts/InputKeyword';
-// import AddButton from '../InputParts/AddButton';
+import DisplayKeyword from '../InputParts/DisplayKeyword';
+import AddKeyword from '../InputParts/AddKeyword';
 
 class Step1Keyword extends Component {
 
-  constructor() {
-    super()
-    this.state={
-      KeywordList: [],
-      value: "",
-    }
-    this.addKeyword = this.addKeyword.bind(this)
+   constructor() {
+    super();
+    this.state = {
+      count: 0,
+      keywordList: [],
+      value: ""
+    };
   }
 
-  addKeyword() {
+  onChange(keyValue) {
+    this.setState(keyValue);
+  }
+
+  add(keywordElement) {
     this.setState({
-      KeywordList: this.state.KeywordList.concat(this.state.value),
-      value: "",
-    })
+      keywordList: this.state.keywordList.concat(keywordElement),
+      value: ""
+    });
+  }
+
+  handleDelete(id) {
+    const { keywordList } = this.state;
+    const newkeywordList = keywordList.filter(element => element.id !== id);
+    this.setState({ keywordList: newkeywordList });
   }
 
 
   render(){
+    const { keywordList } = this.state;
     return (
       <Container maxWidth="sm">
       <Grid container alignItems="center" justify="center">
@@ -32,14 +43,24 @@ class Step1Keyword extends Component {
           テーマがあればテーマに関連したキーワードを，なければ思いつく限りのキーワードを書いていきましょう．
           何でもいいのでとりあえず思いつく限りの単語を書き出していくことが大切です．
         </Typography>
+        <Grid item xs={12}>
+          <AddKeyword
+          {...this.state}
+          onChange={keyValue => this.onChange(keyValue)}
+          add={keywordElement => this.add(keywordElement)}
+        />
+        </Grid>
+
         <ul>
-          <InputKeyword /> 
-          {this.state.KeywordList.map((todo, idx) => {
-            return <InputKeyword key={idx}/>})}
+          {keywordList.map(element => (
+            <DisplayKeyword
+              key={element.id}
+              element={element}
+              onDelete={id => this.handleDelete(id)}
+              {...this.state}
+            />
+          ))}
         </ul>
-        <Button onClick={this.addKeyword} variant="contained" startIcon={<AddIcon />}>
-          項目を追加
-        </Button>
       </Grid>
       </Container>
     );
