@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {Container, Grid, Typography} from '@material-ui/core';
+import {Container, Grid} from '@material-ui/core';
 import DisplayKeyword from '../InputParts/DisplayKeyword';
-import AddKeyword from '../InputParts/AddKeyword';
+import AddProblem from '../InputParts/AddProblem';
 
 import '../../Styles/procedure.css';
 
-class Step1Keyword extends Component {
+class PloblemSection extends Component {
 
    constructor() {
     super();
@@ -38,13 +38,8 @@ class Step1Keyword extends Component {
     return (
       <Container maxWidth="sm">
       <Grid container alignItems="center" justify="center">
-        <Typography variant="h4" style={{margin: "3vh auto"}}>Step1 キーワードを出していこう</Typography>
-        <Typography variant="body1" gutterBottom>
-          テーマがあればテーマに関連したキーワードを，なければ思いつく限りのキーワードを書いていきましょう．
-          何でもいいのでとりあえず思いつく限りの単語を書き出していくことが大切です．
-        </Typography>
         <Grid item xs={12}>
-          <AddKeyword
+          <AddProblem
           {...this.state}
           onChange={keyValue => this.onChange(keyValue)}
           add={keywordElement => this.add(keywordElement)}
@@ -65,7 +60,6 @@ class Step1Keyword extends Component {
       </Container>
     );
   }
-  
 }
 
-export default Step1Keyword;
+export default PloblemSection;
