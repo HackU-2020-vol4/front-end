@@ -1,11 +1,30 @@
 import React, {Component} from 'react';
 import {Container, Grid, Typography} from '@material-ui/core';
 import ProblemSection from '../InputParts/ProblemSection';
+import axios from 'axios';
 
 class Step2Problem extends Component {
-  render(){
-    const keywordList = ["キーワード1", "キーワード2", "キーワード3"]
+  constructor() {
+    super();
+    this.state = {
+      keywordList: [],
+      value: "",
+    };
+  }
+  componentDidMount() {
+    var room_id = localStorage.getItem("roomid");
+    axios.get(`http://localhost:8080/keywords/${room_id}`)
+    .then(results => {
+      const keywords = results.data;
+      this.setState({ keywordList: keywords });
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
+  }
 
+  render(){
+    const keywordList = this.state.keywordList
     return (
     <Container maxWidth="sm">
     <Grid container alignItems="center" justify="center">
@@ -17,8 +36,8 @@ class Step2Problem extends Component {
       <ul>
       {keywordList.map(element => (
         <div>
-          <Typography variant="h6" style={{margin: "3vh auto"}}>{element} : </Typography>
-          <ProblemSection />
+          <Typography variant="h6" style={{margin: "3vh auto"}}>{element.Comment} : </Typography>
+          <ProblemSection keyword_id={element.ID} />
         </div>
         ))}
       </ul>
