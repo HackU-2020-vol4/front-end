@@ -30,7 +30,7 @@ class PloblemSection extends Component {
     }, 10000);
   }
 
-  FirstGet(){
+ FirstGet(){
     axios.get(`http://localhost:8080/associations/${this.props.keyword_id}`)
     .then(results => {
       const keywords = results.data;
@@ -39,7 +39,7 @@ class PloblemSection extends Component {
     .catch((data) =>{
       console.log(data)
     })
-  }
+  } 
 
 
   onChange(keyValue) {
@@ -61,8 +61,8 @@ class PloblemSection extends Component {
   }
   //delete
   handleDelete(ID){
-    console.log("delete")
     axios.delete(`http://localhost:8080/associations/${ID}`)
+    axios.delete(`http://localhost:8080/solutions/0/${ID}`)
     const { keywordList } = this.state;
     const newkeywordList = keywordList.filter(element => element.ID !== ID);
     this.setState({ keywordList: newkeywordList });

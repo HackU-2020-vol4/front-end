@@ -61,6 +61,7 @@ class SolutionSection extends Component {
 
   handleDelete(ID) {
     axios.delete(`http://localhost:8080/solutions/${ID}`)
+    
     const { keywordList } = this.state;
     const newkeywordList = keywordList.filter(element => element.ID !== ID);
     this.setState({ keywordList: newkeywordList });

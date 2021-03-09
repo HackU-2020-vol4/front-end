@@ -27,7 +27,7 @@ class Step1Keyword extends Component {
     .catch((data) =>{
       console.log(data)
     })
-    }, 3000);
+    }, 10000);
   }
   onfirstget(){
     var room_id = localStorage.getItem("roomid");
@@ -46,7 +46,6 @@ class Step1Keyword extends Component {
   }
 
   add(keywordElement) {
-    console.log(keywordElement.Comment);
     var room_id = localStorage.getItem("roomid");
     axios.post(`http://localhost:8080/keywords/${room_id}/create`,{Comment: keywordElement.Comment})
     .then((response)=>{
@@ -62,6 +61,8 @@ class Step1Keyword extends Component {
 
   handleDelete(ID) {
     axios.delete(`http://localhost:8080/keywords/${ID}`)
+    axios.delete(`http://localhost:8080/associations/10/${ID}`)
+    axios.delete(`http://localhost:8080/solutions/0/0/${ID}`)
     const { keywordList } = this.state;
     const newkeywordList = keywordList.filter(element => element.ID !== ID);
     this.setState({ keywordList: newkeywordList });
