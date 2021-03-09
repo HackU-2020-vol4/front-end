@@ -51,15 +51,20 @@ class Step1Keyword extends Component {
     })
   }
 
-  handleDelete(id) {
+  handleDelete(ID) {
+    axios.delete(`http://localhost:8080/keywords/${ID}`)
     const { keywordList } = this.state;
-    const newkeywordList = keywordList.filter(element => element.id !== id);
+    const newkeywordList = keywordList.filter(element => element.ID !== ID);
     this.setState({ keywordList: newkeywordList });
   }
 
 
   render(){
     const { keywordList } = this.state;
+    this.state.keywordList.map(element => {
+      console.log("ID:"+JSON.stringify(element.ID));
+    }
+    )
     return (
       <Container maxWidth="sm">
       <Grid container alignItems="center" justify="center">
@@ -79,9 +84,9 @@ class Step1Keyword extends Component {
         <ul>
           {this.state.keywordList.map(element => (
             <DisplayKeyword
-              key={element.id}
+              key={element.ID}
               element={element}
-              onDelete={id => this.handleDelete(id)}
+              onDelete={ID => this.handleDelete(ID)}
               {...this.state}
             />
           ))}

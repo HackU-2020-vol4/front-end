@@ -6,7 +6,7 @@ class DisplayKeyword extends Component {
 
     render(){
         const {
-            element: { id },
+            element: { ID },
             onDelete
         } = this.props;
         return (
@@ -17,7 +17,7 @@ class DisplayKeyword extends Component {
                 </Typography>
             </Grid>
             <Grid item xs={1}>
-                <IconButton onClick={() => onDelete(id)} style={{padding: "0", color: "#305278" }}>
+                <IconButton onClick={() => onDelete(ID)} style={{padding: "0", color: "#305278" }}>
                 <HighlightOffIcon fontSize="large"/>
                 </IconButton>
             </Grid>

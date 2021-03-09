@@ -14,7 +14,7 @@ class AddKeyword extends React.Component{
         if (value) {
         const keywordElement = {
             Comment: value,
-            id: keywordList.length + 1
+            ID: keywordList.length + 1
         };
         add(keywordElement);
         }
@@ -24,7 +24,7 @@ class AddKeyword extends React.Component{
     return (
         <Grid container alignItems="center" justify="center">
             <TextField 
-            id="standard-basic"
+            ID="standard-basic"
             label="キーワードを入力" 
             value={value}
             onChange={e => this.onChange(e)} />
