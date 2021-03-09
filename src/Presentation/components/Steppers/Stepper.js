@@ -56,6 +56,7 @@ const Steppers = (props) => {
     const handleNext = () => setActiveStep(prevActiveStep => prevActiveStep + 1)
     const handleBack = () => setActiveStep(prevActiveStep => prevActiveStep - 1)
 
+    localStorage.setItem('roomid', props.roomid);
     return <>
         <Stepper alternativeLabel className={classes.stepper} connector={<StepConnector />} activeStep={activeStep}>
                 {/* Change the number of loops here based on StepContent */}

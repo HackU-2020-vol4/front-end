@@ -9,12 +9,12 @@ class DisplayKeyword extends Component {
             element: { id },
             onDelete
         } = this.props;
-
+        
         return (
         <Grid container style={{margin: "3vh auto"}}>
             <Grid item xs={11}>
                 <Typography variant="h6" gutterBottom>
-                    ・ {this.props.element.content}
+                    ・ {this.props.element.Comment}
                 </Typography>
             </Grid>
             <Grid item xs={1}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Container, Grid, Typography} from '@material-ui/core';
 import DisplayKeyword from '../InputParts/DisplayKeyword';
 import AddKeyword from '../InputParts/AddKeyword';
-
+import axios from 'axios';
 import '../../Styles/procedure.css';
 
 class Step1Keyword extends Component {
@@ -14,9 +14,22 @@ class Step1Keyword extends Component {
       value: ""
     };
   }
+  //get
+  componentDidMount() {
+    var room_id = localStorage.getItem("roomid");
+    axios.get(`http://localhost:8080/keywords/${room_id}`)
+    .then(results => {
+      this.setState({ keywordList: results.data}) 
+      console.log(results)
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
+  }
 
   onChange(keyValue) {
     this.setState(keyValue);
+    console.log(keyValue)
   }
 
   add(keywordElement) {
@@ -45,10 +58,10 @@ class Step1Keyword extends Component {
         </Typography>
         <Grid item xs={12}>
           <AddKeyword
-          {...this.state}
-          onChange={keyValue => this.onChange(keyValue)}
-          add={keywordElement => this.add(keywordElement)}
-        />
+            {...this.state}
+            onChange={keyValue => this.onChange(keyValue)}
+            add={keywordElement => this.add(keywordElement)}
+          />
         </Grid>
 
         <ul>
