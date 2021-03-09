@@ -25,7 +25,6 @@ class Step3Solution extends Component {
   }
   render(){
     const keywordList = this.state.keywordList
-    
     return (
     <Container maxWidth="sm">
     <Grid container alignItems="center" justify="center">
@@ -38,7 +37,7 @@ class Step3Solution extends Component {
       {keywordList.map(element => (
         <div>
           <Typography variant="h6" style={{margin: "3vh auto"}}>{element.Comment} : </Typography>
-          <SolutionSection association_id={element.ID} />
+          <SolutionSection association_id={element.ID} keyword_id={element.KeywordID}/>
         </div>
         ))}
       </ul>

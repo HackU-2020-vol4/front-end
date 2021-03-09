@@ -47,9 +47,8 @@ class SolutionSection extends Component {
 
   add(keywordElement) {
     var room_id = localStorage.getItem("roomid");
-    axios.post(`http://localhost:8080/solutions/${this.props.association_id}/${room_id}/create`,{Comment: keywordElement.Comment})
+    axios.post(`http://localhost:8080/solutions/${this.props.association_id}/${this.props.keyword_id}/${room_id}/create`,{Comment: keywordElement.Comment})
     .then((response)=>{
-      console.log(response)
       this.setState({
         keywordList: this.state.keywordList.concat(keywordElement),
         value: ""
@@ -61,7 +60,6 @@ class SolutionSection extends Component {
   }
 
   handleDelete(ID) {
-    console.log("delete")
     axios.delete(`http://localhost:8080/solutions/${ID}`)
     const { keywordList } = this.state;
     const newkeywordList = keywordList.filter(element => element.ID !== ID);
@@ -71,6 +69,7 @@ class SolutionSection extends Component {
 
   render(){
     const { keywordList } = this.state;
+    console.log(this.props.keyword_id)
     return (
       <Container maxWidth="sm">
       <Grid container alignItems="center" justify="center">
