@@ -12,13 +12,13 @@ class Step1Keyword extends Component {
     this.state = {
       keywordList: [],
       value: "",
-      keywords: [],
     };
   }
   // //get
   componentDidMount() {
+    this.onfirstget()
     var room_id = localStorage.getItem("roomid");
-    // this.interval = setInterval(() => {
+    this.interval = setInterval(() => {
     axios.get(`http://localhost:8080/keywords/${room_id}`)
     .then(results => {
       const keywords = results.data;
@@ -27,10 +27,19 @@ class Step1Keyword extends Component {
     .catch((data) =>{
       console.log(data)
     })
-    // }, 5000);
+    }, 3000);
   }
-  //post
-
+  onfirstget(){
+    var room_id = localStorage.getItem("roomid");
+    axios.get(`http://localhost:8080/keywords/${room_id}`)
+    .then(results => {
+      const keywords = results.data;
+      this.setState({ keywordList: keywords });
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
+  }
 
   onChange(keyValue) {
     this.setState(keyValue);
@@ -61,10 +70,6 @@ class Step1Keyword extends Component {
 
   render(){
     const { keywordList } = this.state;
-    this.state.keywordList.map(element => {
-      console.log("ID:"+JSON.stringify(element.ID));
-    }
-    )
     return (
       <Container maxWidth="sm">
       <Grid container alignItems="center" justify="center">
