@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Container, Grid} from '@material-ui/core';
 import DisplayKeyword from '../InputParts/DisplayKeyword';
 import AddSolution from '../InputParts/AddSolution';
+import axios from 'axios';
 
 import '../../Styles/procedure.css';
 
@@ -15,20 +16,55 @@ class SolutionSection extends Component {
     };
   }
 
+  componentDidMount(){
+    this.FirstGet()
+    this.interval = setInterval(() => {
+    axios.get(`http://localhost:8080/solutions/${this.props.association_id}`)
+    .then(results => {
+      const keywords = results.data;
+      this.setState({ keywordList: keywords });
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
+    }, 10000);
+  }
+  
+  FirstGet(){
+    axios.get(`http://localhost:8080/solutions/${this.props.association_id}`)
+    .then(results => {
+      const keywords = results.data;
+      this.setState({ keywordList: keywords });
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
+  }
+
   onChange(keyValue) {
     this.setState(keyValue);
   }
 
   add(keywordElement) {
-    this.setState({
-      keywordList: this.state.keywordList.concat(keywordElement),
-      value: ""
-    });
+    var room_id = localStorage.getItem("roomid");
+    axios.post(`http://localhost:8080/solutions/${this.props.association_id}/${room_id}/create`,{Comment: keywordElement.Comment})
+    .then((response)=>{
+      console.log(response)
+      this.setState({
+        keywordList: this.state.keywordList.concat(keywordElement),
+        value: ""
+      });
+    })
+    .catch((data)=>{
+      console.log(data)
+    })
   }
 
-  handleDelete(id) {
+  handleDelete(ID) {
+    console.log("delete")
+    axios.delete(`http://localhost:8080/solutions/${ID}`)
     const { keywordList } = this.state;
-    const newkeywordList = keywordList.filter(element => element.id !== id);
+    const newkeywordList = keywordList.filter(element => element.ID !== ID);
     this.setState({ keywordList: newkeywordList });
   }
 
@@ -44,14 +80,14 @@ class SolutionSection extends Component {
           onChange={keyValue => this.onChange(keyValue)}
           add={keywordElement => this.add(keywordElement)}
         />
-        </Grid>
+      </Grid>
 
         <ul>
           {keywordList.map(element => (
             <DisplayKeyword
-              key={element.id}
+              key={element.ID}
               element={element}
-              onDelete={id => this.handleDelete(id)}
+              onDelete={ID => this.handleDelete(element.ID)}
               {...this.state}
             />
           ))}

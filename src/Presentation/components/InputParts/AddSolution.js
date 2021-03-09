@@ -13,8 +13,8 @@ class AddSolution extends React.Component{
         const { value, keywordList, add } = this.props;
         if (value) {
         const keywordElement = {
-            content: value,
-            id: keywordList.length + 1
+            Comment: value,
+            ID:      keywordList.length + 1
         };
         add(keywordElement);
         }
@@ -24,12 +24,18 @@ class AddSolution extends React.Component{
     return (
         <Grid container alignItems="center" justify="center">
             <TextField 
-            id="standard-basic"
+            ID="standard-basic"
             label="解決策を入力" 
             value={value}
             style = {{width: 350}}
-            onChange={e => this.onChange(e)} />
-        <Button onClick={() => this.add()} variant="contained" startIcon={<AddIcon />} style={{backgroundColor: "#C2DDE8"}}>
+            onChange={e => this.onChange(e)}
+            />
+        <Button
+            onClick={() => this.add()}
+            variant="contained"
+            startIcon={<AddIcon />}
+            style={{backgroundColor: "#C2DDE8"}}
+        >
           Add
         </Button>
         </Grid>
