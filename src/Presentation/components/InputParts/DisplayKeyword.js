@@ -9,7 +9,6 @@ class DisplayKeyword extends Component {
             element: { id },
             onDelete
         } = this.props;
-        
         return (
         <Grid container style={{margin: "3vh auto"}}>
             <Grid item xs={11}>

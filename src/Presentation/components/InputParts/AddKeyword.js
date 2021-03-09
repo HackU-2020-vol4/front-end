@@ -13,7 +13,7 @@ class AddKeyword extends React.Component{
         const { value, keywordList, add } = this.props;
         if (value) {
         const keywordElement = {
-            content: value,
+            Comment: value,
             id: keywordList.length + 1
         };
         add(keywordElement);

@@ -11,25 +11,27 @@ class Step1Keyword extends Component {
     super();
     this.state = {
       keywordList: [],
-      value: ""
+      value: "",
+      keywords: [],
     };
   }
-  //get
+  // //get
   componentDidMount() {
     var room_id = localStorage.getItem("roomid");
+    // this.interval = setInterval(() => {
     axios.get(`http://localhost:8080/keywords/${room_id}`)
     .then(results => {
-      this.setState({ keywordList: results.data}) 
-      console.log(results)
+      const keywords = results.data;
+      this.setState({ keywordList: keywords });
     })
     .catch((data) =>{
       console.log(data)
     })
+    // }, 5000);
   }
 
   onChange(keyValue) {
     this.setState(keyValue);
-    console.log(keyValue)
   }
 
   add(keywordElement) {
@@ -65,7 +67,7 @@ class Step1Keyword extends Component {
         </Grid>
 
         <ul>
-          {keywordList.map(element => (
+          {this.state.keywordList.map(element => (
             <DisplayKeyword
               key={element.id}
               element={element}
