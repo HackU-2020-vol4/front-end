@@ -29,16 +29,26 @@ class Step1Keyword extends Component {
     })
     // }, 5000);
   }
+  //post
+
 
   onChange(keyValue) {
     this.setState(keyValue);
   }
 
   add(keywordElement) {
-    this.setState({
-      keywordList: this.state.keywordList.concat(keywordElement),
-      value: ""
-    });
+    console.log(keywordElement.Comment);
+    var room_id = localStorage.getItem("roomid");
+    axios.post(`http://localhost:8080/keywords/${room_id}/create`,{Comment: keywordElement.Comment})
+    .then((response)=>{
+      this.setState({
+        keywordList: this.state.keywordList.concat(keywordElement),
+        value: ""
+      });
+    })
+    .catch((data)=>{
+      console.log(data)
+    })
   }
 
   handleDelete(id) {
