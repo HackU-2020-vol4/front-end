@@ -27,7 +27,7 @@ class Step1Keyword extends Component {
     .catch((data) =>{
       console.log(data)
     })
-    }, 3000);
+    }, 2000);
   }
   onfirstget(){
     var room_id = localStorage.getItem("roomid");
