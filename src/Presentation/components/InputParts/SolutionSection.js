@@ -27,7 +27,7 @@ class SolutionSection extends Component {
     .catch((data) =>{
       console.log(data)
     })
-    }, 10000);
+    }, 3000);
   }
   
   FirstGet(){
