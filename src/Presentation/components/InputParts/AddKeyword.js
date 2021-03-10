@@ -13,8 +13,8 @@ class AddKeyword extends React.Component{
         const { value, keywordList, add } = this.props;
         if (value) {
         const keywordElement = {
-            content: value,
-            id: keywordList.length + 1
+            Comment: value,
+            ID: keywordList.length + 1
         };
         add(keywordElement);
         }
@@ -24,7 +24,7 @@ class AddKeyword extends React.Component{
     return (
         <Grid container alignItems="center" justify="center">
             <TextField 
-            id="standard-basic"
+            ID="standard-basic"
             label="キーワードを入力" 
             value={value}
             onChange={e => this.onChange(e)} />

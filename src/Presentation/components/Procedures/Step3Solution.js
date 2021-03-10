@@ -1,11 +1,30 @@
 import React, {Component} from 'react';
 import {Container, Grid, Typography} from '@material-ui/core';
 import SolutionSection from '../InputParts/SolutionSection';
+import axios from 'axios';
 
 class Step3Solution extends Component {
+  constructor() {
+    super();
+    this.state = {
+      keywordList: [],
+      value: "",
+    };
+  }
+  
+  componentDidMount() {
+    var room_id = localStorage.getItem("roomid");
+    axios.get(`http://localhost:8080/associations/10/${room_id}`)
+    .then(results => {
+      const keywords = results.data;
+      this.setState({ keywordList: keywords });
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
+  }
   render(){
-    const keywordList = ["課題○○○", "課題○○○", "課題○○○"]
-
+    const keywordList = this.state.keywordList
     return (
     <Container maxWidth="sm">
     <Grid container alignItems="center" justify="center">
@@ -17,8 +36,8 @@ class Step3Solution extends Component {
       <ul>
       {keywordList.map(element => (
         <div>
-          <Typography variant="h6" style={{margin: "3vh auto"}}>{element} : </Typography>
-          <SolutionSection/>
+          <Typography variant="h6" style={{margin: "3vh auto"}}>{element.Comment} : </Typography>
+          <SolutionSection association_id={element.ID} keyword_id={element.KeywordID}/>
         </div>
         ))}
       </ul>

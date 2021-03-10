@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Container, Grid, Typography} from '@material-ui/core';
 import DisplayKeyword from '../InputParts/DisplayKeyword';
 import AddKeyword from '../InputParts/AddKeyword';
-
+import axios from 'axios';
 import '../../Styles/procedure.css';
 
 class Step1Keyword extends Component {
@@ -11,8 +11,34 @@ class Step1Keyword extends Component {
     super();
     this.state = {
       keywordList: [],
-      value: ""
+      value: "",
     };
+  }
+  // //get
+  componentDidMount() {
+    this.onfirstget()
+    var room_id = localStorage.getItem("roomid");
+    this.interval = setInterval(() => {
+    axios.get(`http://localhost:8080/keywords/${room_id}`)
+    .then(results => {
+      const keywords = results.data;
+      this.setState({ keywordList: keywords });
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
+    }, 2000);
+  }
+  onfirstget(){
+    var room_id = localStorage.getItem("roomid");
+    axios.get(`http://localhost:8080/keywords/${room_id}`)
+    .then(results => {
+      const keywords = results.data;
+      this.setState({ keywordList: keywords });
+    })
+    .catch((data) =>{
+      console.log(data)
+    })
   }
 
   onChange(keyValue) {
@@ -20,15 +46,25 @@ class Step1Keyword extends Component {
   }
 
   add(keywordElement) {
-    this.setState({
-      keywordList: this.state.keywordList.concat(keywordElement),
-      value: ""
-    });
+    var room_id = localStorage.getItem("roomid");
+    axios.post(`http://localhost:8080/keywords/${room_id}/create`,{Comment: keywordElement.Comment})
+    .then((response)=>{
+      this.setState({
+        keywordList: this.state.keywordList.concat(keywordElement),
+        value: ""
+      });
+    })
+    .catch((data)=>{
+      console.log(data)
+    })
   }
 
-  handleDelete(id) {
+  handleDelete(ID) {
+    axios.delete(`http://localhost:8080/keywords/${ID}`)
+    axios.delete(`http://localhost:8080/associations/10/${ID}`)
+    axios.delete(`http://localhost:8080/solutions/0/0/${ID}`)
     const { keywordList } = this.state;
-    const newkeywordList = keywordList.filter(element => element.id !== id);
+    const newkeywordList = keywordList.filter(element => element.ID !== ID);
     this.setState({ keywordList: newkeywordList });
   }
 
@@ -45,18 +81,18 @@ class Step1Keyword extends Component {
         </Typography>
         <Grid item xs={12}>
           <AddKeyword
-          {...this.state}
-          onChange={keyValue => this.onChange(keyValue)}
-          add={keywordElement => this.add(keywordElement)}
-        />
+            {...this.state}
+            onChange={keyValue => this.onChange(keyValue)}
+            add={keywordElement => this.add(keywordElement)}
+          />
         </Grid>
 
         <ul>
-          {keywordList.map(element => (
+          {this.state.keywordList.map(element => (
             <DisplayKeyword
-              key={element.id}
+              key={element.ID}
               element={element}
-              onDelete={id => this.handleDelete(id)}
+              onDelete={ID => this.handleDelete(ID)}
               {...this.state}
             />
           ))}

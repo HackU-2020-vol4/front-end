@@ -6,19 +6,18 @@ class DisplayKeyword extends Component {
 
     render(){
         const {
-            element: { id },
+            element: { ID },
             onDelete
         } = this.props;
-
         return (
         <Grid container style={{margin: "3vh auto"}}>
             <Grid item xs={11}>
                 <Typography variant="h6" gutterBottom>
-                    ・ {this.props.element.content}
+                    ・ {this.props.element.Comment}
                 </Typography>
             </Grid>
             <Grid item xs={1}>
-                <IconButton onClick={() => onDelete(id)} style={{padding: "0", color: "#305278" }}>
+                <IconButton onClick={() => onDelete(ID)} style={{padding: "0", color: "#305278" }}>
                 <HighlightOffIcon fontSize="large"/>
                 </IconButton>
             </Grid>
