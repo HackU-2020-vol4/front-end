@@ -1,13 +1,30 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Count = (props) => {
-    return (
-        <div>
-            <h2>{props.title}</h2>
-            <button onClick={()=>props.countUpFunc()}>ここをクリック</button>
-            <p>{props.count}</p>
-        </div>
-    )
+class Count extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+          count: 0,
+    };
+    }
+
+    countUp(){
+    this.setState({
+        count: this.state.count + 1
+    });
+    }
+
+    render(){
+        const { count } = this.state;
+        return (
+            <div>
+                <button onClick={()=>this.countUp()}>ここをクリック</button>
+                <p>{count}</p>
+            </div>
+        );
+    }
+    
 };
 
 export default Count;

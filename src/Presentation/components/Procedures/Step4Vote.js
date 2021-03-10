@@ -2,24 +2,18 @@ import React from 'react';
 import Count from '../coutParts/count';
 
 class Step4Vote extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            count: 0
-        }
-    } 
-
-    countUp = () => {
-        this.setState({
-            count: this.state.count+1
-        })
-    };
 
     render() {
+        const solutionList= ["解決策1", "解決策2", "解決策3"]
+        
         return(
             <div>
-                <Count title={"カウントアップボタン"} count={this.state.count} countUpFunc={()=>this.countUp() }/>
-                <Count title={"カウントアップボタン"} count={this.state.count} countUpFunc={()=>this.countUp() } />
+            {solutionList.map((element) => (
+                <div>
+                    <p>{element}</p>
+                <Count  />
+                </div>
+            ))}
             </div>
         )
     }
