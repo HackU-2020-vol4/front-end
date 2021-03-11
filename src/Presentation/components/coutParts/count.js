@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+
 
 class Count extends Component {
 
@@ -6,53 +11,34 @@ class Count extends Component {
         super();
         this.state = {
             count: 0,
-            roomid: "test",
         };
     }
-    
+
 
     countUp() {
-        var n = Number(localStorage.getItem(this.state.roomid));
-        if(localStorage.getItem('test') == null) {
-            if(n !== 0){
-                n=0;
-        }
+        this.setState({
+            count: this.state.count + 1
+        });
     }
-        if(n >= 3){
-            localStorage.setItem(this.state.roomid, n = 3);
-            this.setState({
-                count: this.state.count
-            });
-        }else{
-            localStorage.setItem(this.state.roomid, n += 1);
-            this.setState({
-                count: this.state.count + 1
-            });
-        }
-        console.log(n);
-    }
+
     countDown() {
-        var n = Number(localStorage.getItem(this.state.roomid));
-        if (n <= 0) {
-            localStorage.setItem(this.state.roomid, n = 0);
+        if (this.state.count <= 0) {
             this.setState({
                 count: 0
             });
         } else {
-            localStorage.setItem(this.state.roomid, n -= 1);
             this.setState({
-                count: this.state.count - 1
+                count: this.state.count * 0
             });
         }
-        console.log(n);
     }
 
     render() {
         const { count } = this.state;
         return (
             <div>
-                <button onClick={() => this.countUp()}>ここをクリック</button>
-                <button onClick={() => this.countDown()}>ここをクリック</button>
+                <ThumbUpIcon variant="contained" color="action" style={{ fontSize: 100}} onClick={() => this.countUp()}></ThumbUpIcon>
+                <Button variant="contained" color="action" onClick={() => this.countDown()}>投票の取り消し</Button>
                 <p>{count}</p>
             </div>
         );
