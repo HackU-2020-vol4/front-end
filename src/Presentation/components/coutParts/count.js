@@ -36,11 +36,11 @@ class Count extends Component {
     render() {
         const { count } = this.state;
         return (
-            <div>
-                <ThumbUpIcon variant="contained" color="action" style={{ fontSize: 100}} onClick={() => this.countUp()}></ThumbUpIcon>
-                <Button variant="contained" color="action" onClick={() => this.countDown()}>投票の取り消し</Button>
-                <p>{count}</p>
-            </div>
+            <>
+                {count}票
+                <ThumbUpIcon  color="action" style={{ fontSize: 60}} onClick={() => this.countUp()}></ThumbUpIcon>
+                <Button variant="contained" color="action" onClick={() => this.countDown()} style={{backgroundColor: "#C2DDE8"}}>取り消し</Button>
+            </>
         );
     }
 

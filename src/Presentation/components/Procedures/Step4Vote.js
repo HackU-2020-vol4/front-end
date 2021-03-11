@@ -13,8 +13,10 @@ class Step4Vote extends React.Component {
                 <Grid container alignItems="center" justify="center">
                     <Typography variant="h4" style={{ margin: "3vh auto" }}>Step4 投票しよう</Typography>
                     <Typography variant="body1" gutterBottom>
-                        自分がいいと思うアイデアに投票しましょう．
+                        自分がいいと思うアイデアに投票しましょう.
                     </Typography>
+                    <div>
+
                     <ul>
                         {solutionList.map((element) => (
                             <div>
@@ -24,6 +26,7 @@ class Step4Vote extends React.Component {
                             </div>
                         ))}
                     </ul>
+                    </div>
                 </Grid>
             </Container>
         )
