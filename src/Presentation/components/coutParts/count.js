@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+
+import '../../Styles/count.css';
 
 
 class Count extends Component {
@@ -37,9 +38,9 @@ class Count extends Component {
         const { count } = this.state;
         return (
             <>
-                {count}票
-                <ThumbUpIcon  color="action" style={{ fontSize: 60}} onClick={() => this.countUp()}></ThumbUpIcon>
-                <Button variant="contained" color="action" onClick={() => this.countDown()} style={{backgroundColor: "#C2DDE8"}}>取り消し</Button>
+                <span style={{ marginLeft: 10, fontSize: 40 }}>{count}</span>票
+                <ThumbUpAltIcon color="action" style={{ marginBottom: -15, marginRight: 10, marginLeft: 10, fontSize: 60 }} onClick={() => this.countUp()}></ThumbUpAltIcon>
+                <Button variant="contained" color="action" onClick={() => this.countDown()} style={{ backgroundColor: "#C2DDE8" }}>cancel</Button>
             </>
         );
     }

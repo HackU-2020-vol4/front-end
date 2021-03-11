@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Container, Grid, Typography } from '@material-ui/core';
+import React, { Component } from 'react';
+import { Container, Grid, Typography } from '@material-ui/core';
 import Count from '../coutParts/count';
 
 
@@ -17,15 +17,15 @@ class Step4Vote extends React.Component {
                     </Typography>
                     <div>
 
-                    <ul>
-                        {solutionList.map((element) => (
-                            <div>
-                                <Typography variant="h6" style={{ margin: "3vh auto" }}>{element} :
+                        <ul>
+                            {solutionList.map((element) => (
+                                <div>
+                                    <Typography variant="h6" style={{ margin: "3vh auto" }}>{element} :
                                 <Count />
-                                </Typography>
-                            </div>
-                        ))}
-                    </ul>
+                                    </Typography>
+                                </div>
+                            ))}
+                        </ul>
                     </div>
                 </Grid>
             </Container>
