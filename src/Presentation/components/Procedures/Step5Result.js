@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Grid, Typography } from '@material-ui/core';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Result_page from '../coutParts/result_page'
 
 class Step5Result extends React.Component {
@@ -9,7 +10,6 @@ class Step5Result extends React.Component {
         super();
         this.state = {
             keywordList: [],
-
         };
     }
 
@@ -24,7 +24,7 @@ class Step5Result extends React.Component {
                 console.log(data)
             })
     }
-    delete(){
+    delete() {
         var room_id = localStorage.getItem("roomid");
         axios.delete(`http://localhost:8080/vote/0/${room_id}/all`)
     }
@@ -49,14 +49,14 @@ class Step5Result extends React.Component {
                             ))}
                         </ul>
                     </div>
+                    <DeleteForeverIcon
+                        onClick={() => this.delete()}
+                        variant="contained"
+                        style={{ fontSize: 60 }}
+                    >
+                    </DeleteForeverIcon>
+                    <a>DELETE</a>
                 </Grid>
-                <Button
-                    onClick={() => this.delete()}
-                    variant="contained"
-                    style={{backgroundColor: "#C2DDE8"}}
-                >
-                    リセット
-                </Button>
             </Container>
         )
     }
