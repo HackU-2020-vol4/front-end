@@ -16,22 +16,26 @@ class Result_page extends Component {
 
 
     componentDidMount() {
-
+        this.firstPageReload();
         var room_id = localStorage.getItem("roomid");
-        // this.interval = setInterval(() => {
+        this.interval = setInterval(() => {
         axios.get(`http://localhost:8080/vote/${this.props.solution_id}/${room_id}/index`)
         .then(results => {
         console.log(results.data)
           const keywords = Object.keys(results.data).length;
-          console.log("solution_id = " + this.props.solution_id)
-          console.log("room_id = " + room_id)
-          console.log("length = "+keywords)
           this.setState({ count: keywords })
         })
-
-        // }, 5000);
+        }, 5000);
     }
-
+    firstPageReload(){
+        var room_id = localStorage.getItem("roomid");
+        axios.get(`http://localhost:8080/vote/${this.props.solution_id}/${room_id}/index`)
+        .then(results => {
+        console.log(results.data)
+          const keywords = Object.keys(results.data).length;
+          this.setState({ count: keywords })
+        });
+    }
     render() {
         const { count } = this.state;
         return (
