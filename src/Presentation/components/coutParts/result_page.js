@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import axios from 'axios';
 import '../../Styles/count.css';
 
@@ -36,6 +34,7 @@ class Result_page extends Component {
           this.setState({ count: keywords })
         });
     }
+
     render() {
         const { count } = this.state;
         return (

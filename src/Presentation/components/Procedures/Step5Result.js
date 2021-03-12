@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@material-ui/core';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 import Result_page from '../coutParts/result_page'
 
 class Step5Result extends React.Component {
@@ -8,7 +9,7 @@ class Step5Result extends React.Component {
         super();
         this.state = {
             keywordList: [],
-            value: "",
+
         };
     }
 
@@ -23,8 +24,9 @@ class Step5Result extends React.Component {
                 console.log(data)
             })
     }
-    handleClickOpen() {
-
+    delete(){
+        var room_id = localStorage.getItem("roomid");
+        axios.delete(`http://localhost:8080/vote/0/${room_id}/all`)
     }
     render() {
         return (
@@ -48,7 +50,13 @@ class Step5Result extends React.Component {
                         </ul>
                     </div>
                 </Grid>
-
+                <Button
+                    onClick={() => this.delete()}
+                    variant="contained"
+                    style={{backgroundColor: "#C2DDE8"}}
+                >
+                    リセット
+                </Button>
             </Container>
         )
     }
