@@ -51,8 +51,8 @@ const AppBars = () => {
     return (
         <AppBar position="static" elevation={0} className={classes.topAppBar}>
             <Toolbar className={classes.toolbar}>
-                    <Grid container item direction="row" alignItems="center" xs={12} sm={6}>
-                        <Grid item>
+                    <Grid container item direction="row" alignItems="center" xs={12} sm={6} justify="center">
+                        <Grid item style={{margin: 10}}>
                             <img src={logo} alt="logo" height="70px" />
                         </Grid>
                         <Grid item>
