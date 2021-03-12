@@ -15,6 +15,7 @@ import Step1Keyword from '../Procedures/Step1Keyword';
 import Step2Problem from '../Procedures/Step2Problem';
 import Step3Solution from '../Procedures/Step3Solution';
 import Step4Vote from '../Procedures/Step4Vote';
+import Step5Result from '../Procedures/Step5Result';
 
 
 const style = makeStyles(theme => ({
@@ -45,6 +46,8 @@ const StepContent = ({ step }) => {
 	return <Step3Solution />;
     case 3:
 	return <Step4Vote />;
+    case 4:
+    return <Step5Result />;
     default:
 	return <></>;
     }
@@ -60,7 +63,7 @@ const Steppers = (props) => {
     return <>
         <Stepper alternativeLabel className={classes.stepper} connector={<StepConnector />} activeStep={activeStep}>
                 {/* Change the number of loops here based on StepContent */}
-    {[1, 2, 3, 4].map(e => (<Step key={e}>
+    {[1, 2, 3, 4, 5].map(e => (<Step key={e}>
 			 <StepLabel StepIconComponent={StepIcons} />
 			 </Step>
                 ))}
@@ -80,7 +83,7 @@ const Steppers = (props) => {
     <Button disabled={activeStep === 0} className={classes.button} onClick={handleBack}>
 	Back
     </Button>
-	<Button disabled={activeStep === 3} variant="contained" color="primary" className={classes.button} onClick={handleNext}>
+	<Button disabled={activeStep === 4} variant="contained" color="primary" className={classes.button} onClick={handleNext}>
 	{activeStep === 2 ? 'Pay' : 'Next'}
     </Button>
         </Box>

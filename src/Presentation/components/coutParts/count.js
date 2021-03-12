@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import AcUnitIcon from '@material-ui/icons/AcUnit';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-
+import axios from 'axios';
 import '../../Styles/count.css';
 
 
@@ -15,8 +14,9 @@ class Count extends Component {
         };
     }
 
-
     countUp() {
+        var room_id = localStorage.getItem("roomid");
+        axios.post(`http://localhost:8080/vote/${this.props.solution_id}/${room_id}/create`,{})
         this.setState({
             count: this.state.count + 1
         });
@@ -28,8 +28,10 @@ class Count extends Component {
                 count: 0
             });
         } else {
+            var room_id = localStorage.getItem("roomid");
+            axios.delete(`http://localhost:8080/vote/${this.props.solution_id}/${room_id}`)
             this.setState({
-                count: this.state.count * 0
+                count: this.state.count - 1
             });
         }
     }
