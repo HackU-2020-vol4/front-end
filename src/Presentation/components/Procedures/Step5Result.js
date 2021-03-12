@@ -7,29 +7,34 @@ class Step5Result extends React.Component {
     constructor() {
         super();
         this.state = {
-          keywordList: [],
-          value: "",
+            keywordList: [],
+            value: "",
         };
     }
 
     componentDidMount() {
         var room_id = localStorage.getItem("roomid");
         axios.get(`http://localhost:8080/solutions/0/${room_id}`)
-        .then(results => {
-          const keywords = results.data;
-          this.setState({ keywordList: keywords });
-        })
-        .catch((data) =>{
-          console.log(data)
-        })
+            .then(results => {
+                const keywords = results.data;
+                this.setState({ keywordList: keywords });
+            })
+            .catch((data) => {
+                console.log(data)
+            })
     }
-    handleClickOpen(){
-        
+    handleClickOpen() {
+
     }
     render() {
         return (
             <Container maxWidth="sm">
-                <Grid container alignItems="center" justify="center">
+                <Grid
+                    container
+                    direction="column"
+                    justify="center"
+                    alignItems="center"
+                >
                     <Typography variant="h4" style={{ margin: "3vh auto" }}>Step5 投票結果</Typography>
                     <div>
                         <ul>
@@ -42,7 +47,6 @@ class Step5Result extends React.Component {
                             ))}
                         </ul>
                     </div>
-
                 </Grid>
 
             </Container>
