@@ -8,7 +8,6 @@ class ProcedureUI extends React.Component {
   render() {
     return (
       <DefaultLayout>
-        <h1>ProcedureUI</h1>
         <Stepper roomid={this.props.location.state.roomid}/>
       </DefaultLayout>
     );

@@ -5,7 +5,6 @@ import {
     Step,
     StepLabel,
     Box,
-    Grid,
     Button
 } from '@material-ui/core';
 import StepIcons from "./StepperIcons"
@@ -21,6 +20,7 @@ import Step5Result from '../Procedures/Step5Result';
 const style = makeStyles(theme => ({
     button: {
 	marginRight: theme.spacing(1),
+    marginTop: theme.spacing(2),
     },
     mainBox: {
         position: "relative",
@@ -54,13 +54,19 @@ const StepContent = ({ step }) => {
 }
 
 const Steppers = (props) => {
-    const [activeStep, setActiveStep] = useState(1) // step x by default
+    const [activeStep, setActiveStep] = useState(0) // step x by default
     const classes = style();
     const handleNext = () => setActiveStep(prevActiveStep => prevActiveStep + 1)
     const handleBack = () => setActiveStep(prevActiveStep => prevActiveStep - 1)
 
     localStorage.setItem('roomid', props.roomid);
     return <>
+        <Button disabled={activeStep === 0} className={classes.button} onClick={handleBack}>
+        	Back
+        </Button>
+	    <Button disabled={activeStep === 4} variant="contained" color="primary" className={classes.button} onClick={handleNext}>
+	        Next
+        </Button>
         <Stepper alternativeLabel className={classes.stepper} connector={<StepConnector />} activeStep={activeStep}>
                 {/* Change the number of loops here based on StepContent */}
     {[1, 2, 3, 4, 5].map(e => (<Step key={e}>
@@ -69,23 +75,8 @@ const Steppers = (props) => {
                 ))}
             </Stepper>
             <Box className={classes.mainBox}>
-               <Grid
-                container
-                spacing={3}
-                direction="column"
-                justify="space-around"
-                alignItems="center"
-                style={{ height: "400px" }}
-            >
-        </Grid>
 	<StepContent step={activeStep} />
     <h1>Room ID : {props.roomid}</h1>
-    <Button disabled={activeStep === 0} className={classes.button} onClick={handleBack}>
-	Back
-    </Button>
-	<Button disabled={activeStep === 4} variant="contained" color="primary" className={classes.button} onClick={handleNext}>
-	{activeStep === 2 ? 'Pay' : 'Next'}
-    </Button>
         </Box>
         </>
 }

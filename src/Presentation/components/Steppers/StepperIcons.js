@@ -3,9 +3,10 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    ContactMail,
-    Info,
-    Payment,
+    EmojiObjectsRounded,
+    HelpRounded,
+    VpnKeyRounded,
+    HowToVoteRounded
 } from '@material-ui/icons';
 
 
@@ -35,9 +36,10 @@ const StepIcons = props => {
     const { active, completed } = props;
 
     const icons = {
-        1: <ContactMail />,
-        2: <Info />,
-        3: <Payment />,
+        1: <VpnKeyRounded />,
+        2: <HelpRounded />,
+        3: <EmojiObjectsRounded />,
+        4: <HowToVoteRounded />
     };
 
     return <div

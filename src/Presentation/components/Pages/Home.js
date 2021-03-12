@@ -55,6 +55,7 @@ createRoomid = (response) => {
   .then(results => {
     console.log(results.data);
     this.setState({ rooms: results.data });
+    this.setState({ roomid: results.data.RoomID });
   })
 }
 
@@ -63,7 +64,6 @@ render() {
   return (
     <div className="App">
       <DefaultLayout>
-      { this.state.rooms.RoomID }      
         <Typography variant="h4" style={{margin: "3vh auto"}}>What's Hackathon Supporter?</Typography>
         <Typography variant="body1" gutterBottom>
           ハッカソンで何かを作りたいが何を作ればいいかわからない。。。
