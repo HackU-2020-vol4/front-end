@@ -16,7 +16,21 @@ class Count extends Component {
     }
 
 
+    componentDidMount(){
+        // this.interval = setInterval(() => {
+            // this.setState({
+            //     count: this.state.count + 1
+            // });
+        // }, 10000*Math.random(1000)+500)
+
+        // this.interval = setInterval(() => {
+            // this.setState({
+            //     count: this.state.count - 1
+            // });
+        // }, 10000*Math.random(500)+300)
+    }
     countUp() {
+        
         this.setState({
             count: this.state.count + 1
         });
@@ -29,7 +43,7 @@ class Count extends Component {
             });
         } else {
             this.setState({
-                count: this.state.count * 0
+                count: this.state.count - 1
             });
         }
     }

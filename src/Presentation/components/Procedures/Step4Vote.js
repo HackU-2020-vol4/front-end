@@ -1,13 +1,33 @@
 import React, { Component } from 'react';
 import { Container, Grid, Typography } from '@material-ui/core';
+import axios from 'axios';
 import Count from '../coutParts/count';
 
 
 class Step4Vote extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+          keywordList: [],
+          value: "",
+        };
+    }
 
+    componentDidMount() {
+        var room_id = localStorage.getItem("roomid");
+        axios.get(`http://localhost:8080/solutions/0/${room_id}`)
+        .then(results => {
+          const keywords = results.data;
+          this.setState({ keywordList: keywords });
+        })
+        .catch((data) =>{
+          console.log(data)
+        })
+    }
     render() {
 
-        const solutionList = ["解決策1", "解決策2", "解決策3"]
+        console.log(this.state.keywordList);
+        // const solutionList = ["解決策1", "解決策2", "解決策3"]
         return (
             <Container maxWidth="sm">
                 <Grid container alignItems="center" justify="center">
@@ -18,9 +38,9 @@ class Step4Vote extends React.Component {
                     <div>
 
                         <ul>
-                            {solutionList.map((element) => (
+                            {this.state.keywordList.map((element) => (
                                 <div>
-                                    <Typography variant="h6" style={{ margin: "3vh auto" }}>{element} :
+                                    <Typography variant="h6" style={{ margin: "3vh auto" }}>{element.Comment} :
                                 <Count />
                                     </Typography>
                                 </div>
