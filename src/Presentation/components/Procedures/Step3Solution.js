@@ -14,7 +14,7 @@ class Step3Solution extends Component {
   
   componentDidMount() {
     var room_id = localStorage.getItem("roomid");
-    axios.get(`http://localhost:8080/associations/10/${room_id}`)
+    axios.get(`http://54.168.42.94/associations/10/${room_id}`)
     .then(results => {
       const keywords = results.data;
       this.setState({ keywordList: keywords });

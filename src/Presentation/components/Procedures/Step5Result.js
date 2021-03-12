@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@material-ui/core';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Result_page from '../coutParts/result_page'
 
@@ -15,7 +14,7 @@ class Step5Result extends React.Component {
 
     componentDidMount() {
         var room_id = localStorage.getItem("roomid");
-        axios.get(`http://localhost:8080/solutions/0/${room_id}`)
+        axios.get(`http://54.168.42.94/solutions/0/${room_id}`)
             .then(results => {
                 const keywords = results.data;
                 this.setState({ keywordList: keywords });
@@ -26,7 +25,7 @@ class Step5Result extends React.Component {
     }
     delete() {
         var room_id = localStorage.getItem("roomid");
-        axios.delete(`http://localhost:8080/vote/0/${room_id}/all`)
+        axios.delete(`http://54.168.42.94/vote/0/${room_id}/all`)
     }
     render() {
         return (

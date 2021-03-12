@@ -13,7 +13,7 @@ class Step2Problem extends Component {
   }
   componentDidMount() {
     var room_id = localStorage.getItem("roomid");
-    axios.get(`http://localhost:8080/keywords/${room_id}`)
+    axios.get(`http://54.168.42.94/keywords/${room_id}`)
     .then(results => {
       const keywords = results.data;
       this.setState({ keywordList: keywords });

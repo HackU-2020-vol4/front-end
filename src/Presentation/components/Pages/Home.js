@@ -51,7 +51,7 @@ class Home extends Component {
   }
 
 createRoomid = (response) => {
-  axios.post(`http://localhost:8080/publishers/create`)
+  axios.post(`http://54.168.42.94/publishers/create`)
   .then(results => {
     console.log(results.data);
     this.setState({ rooms: results.data });

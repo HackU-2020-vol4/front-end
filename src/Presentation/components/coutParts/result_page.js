@@ -17,7 +17,7 @@ class Result_page extends Component {
         this.firstPageReload();
         var room_id = localStorage.getItem("roomid");
         this.interval = setInterval(() => {
-        axios.get(`http://localhost:8080/vote/${this.props.solution_id}/${room_id}/index`)
+        axios.get(`http://54.168.42.94/vote/${this.props.solution_id}/${room_id}/index`)
         .then(results => {
         console.log(results.data)
           const keywords = Object.keys(results.data).length;
@@ -27,7 +27,7 @@ class Result_page extends Component {
     }
     firstPageReload(){
         var room_id = localStorage.getItem("roomid");
-        axios.get(`http://localhost:8080/vote/${this.props.solution_id}/${room_id}/index`)
+        axios.get(`http://54.168.42.94/vote/${this.props.solution_id}/${room_id}/index`)
         .then(results => {
         console.log(results.data)
           const keywords = Object.keys(results.data).length;

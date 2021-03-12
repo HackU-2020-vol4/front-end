@@ -19,7 +19,7 @@ class PloblemSection extends Component {
   componentDidMount(){
     this.FirstGet()
     this.interval = setInterval(() => {
-    axios.get(`http://localhost:8080/associations/${this.props.keyword_id}`)
+    axios.get(`http://54.168.42.94/associations/${this.props.keyword_id}`)
     .then(results => {
       const keywords = results.data;
       this.setState({ keywordList: keywords });
@@ -31,7 +31,7 @@ class PloblemSection extends Component {
   }
 
  FirstGet(){
-    axios.get(`http://localhost:8080/associations/${this.props.keyword_id}`)
+    axios.get(`http://54.168.42.94/associations/${this.props.keyword_id}`)
     .then(results => {
       const keywords = results.data;
       this.setState({ keywordList: keywords });
@@ -48,7 +48,7 @@ class PloblemSection extends Component {
   //add
   add(keywordElement) {
     var room_id = localStorage.getItem("roomid");
-    axios.post(`http://localhost:8080/associations/${this.props.keyword_id}/${room_id}/create`,{Comment: keywordElement.Comment})
+    axios.post(`http://54.168.42.94/associations/${this.props.keyword_id}/${room_id}/create`,{Comment: keywordElement.Comment})
     .then((response)=>{
       this.setState({
         keywordList: this.state.keywordList.concat(keywordElement),
@@ -61,8 +61,8 @@ class PloblemSection extends Component {
   }
   //delete
   handleDelete(ID){
-    axios.delete(`http://localhost:8080/associations/${ID}`)
-    axios.delete(`http://localhost:8080/solutions/0/${ID}`)
+    axios.delete(`http://54.168.42.94/associations/${ID}`)
+    axios.delete(`http://54.168.42.94/solutions/0/${ID}`)
     const { keywordList } = this.state;
     const newkeywordList = keywordList.filter(element => element.ID !== ID);
     this.setState({ keywordList: newkeywordList });
