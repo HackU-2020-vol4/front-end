@@ -16,7 +16,7 @@ class Count extends Component {
 
     countUp() {
         var room_id = localStorage.getItem("roomid");
-        axios.post(`http://localhost:8080/vote/${this.props.solution_id}/${room_id}/create`,{})
+        axios.post(`http://54.168.42.94/vote/${this.props.solution_id}/${room_id}/create`,{})
         this.setState({
             count: this.state.count + 1
         });
@@ -29,7 +29,7 @@ class Count extends Component {
             });
         } else {
             var room_id = localStorage.getItem("roomid");
-            axios.delete(`http://localhost:8080/vote/${this.props.solution_id}/${room_id}`)
+            axios.delete(`http://54.168.42.94/vote/${this.props.solution_id}/${room_id}`)
             this.setState({
                 count: this.state.count - 1
             });

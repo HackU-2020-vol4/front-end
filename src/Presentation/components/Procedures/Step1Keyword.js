@@ -19,7 +19,7 @@ class Step1Keyword extends Component {
     this.onfirstget()
     var room_id = localStorage.getItem("roomid");
     this.interval = setInterval(() => {
-    axios.get(`http://localhost:8080/keywords/${room_id}`)
+    axios.get(`http://54.168.42.94/keywords/${room_id}`)
     .then(results => {
       const keywords = results.data;
       this.setState({ keywordList: keywords });
@@ -47,7 +47,7 @@ class Step1Keyword extends Component {
 
   add(keywordElement) {
     var room_id = localStorage.getItem("roomid");
-    axios.post(`http://localhost:8080/keywords/${room_id}/create`,{Comment: keywordElement.Comment})
+    axios.post(`http://54.168.42.94/keywords/${room_id}/create`,{Comment: keywordElement.Comment})
     .then((response)=>{
       this.setState({
         keywordList: this.state.keywordList.concat(keywordElement),
@@ -60,9 +60,9 @@ class Step1Keyword extends Component {
   }
 
   handleDelete(ID) {
-    axios.delete(`http://localhost:8080/keywords/${ID}`)
-    axios.delete(`http://localhost:8080/associations/10/${ID}`)
-    axios.delete(`http://localhost:8080/solutions/0/0/${ID}`)
+    axios.delete(`http://54.168.42.94/keywords/${ID}`)
+    axios.delete(`http://54.168.42.94/associations/10/${ID}`)
+    axios.delete(`http://54.168.42.94/solutions/0/0/${ID}`)
     const { keywordList } = this.state;
     const newkeywordList = keywordList.filter(element => element.ID !== ID);
     this.setState({ keywordList: newkeywordList });
